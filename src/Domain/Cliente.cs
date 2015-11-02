@@ -4,6 +4,7 @@ namespace Domain
 {
     public class Cliente
     {
+        //Apenas para o entity
         internal Cliente()
         {
         }
