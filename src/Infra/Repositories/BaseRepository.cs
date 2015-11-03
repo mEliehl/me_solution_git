@@ -7,17 +7,17 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Threading;
 
 namespace Infra.Repositories
 {
     public abstract class BaseRepository<T> : IBaseRepository<T> where T : Identity
     {
-        protected DbContext Context
+        protected readonly DbContext Context;
+
+        public BaseRepository()
         {
-            get
-            {
-                return new BaseContext();   
-            }
+            Context = new BaseContext();
         }
 
         public void Add(T entity)
@@ -27,17 +27,17 @@ namespace Infra.Repositories
 
         public void AddRange(IList<T> entities)
         {
-            throw new NotImplementedException();
+            Context.AddRange(entities);
         }
 
         public bool Any(Expression<Func<T, bool>> exp)
         {
-            throw new NotImplementedException();
+            return Context.Set<T>().Any(exp);
         }
 
         public Task<bool> AnyAsync(Expression<Func<T, bool>> exp)
         {
-            throw new NotImplementedException();
+            return Context.Set<T>().AnyAsync(exp);
         }
 
         public IList<T> Get(Expression<Func<T, bool>> exp)
@@ -49,42 +49,57 @@ namespace Infra.Repositories
 
         public Task<List<T>> GetAsync(Expression<Func<T, bool>> exp)
         {
-            throw new NotImplementedException();
+            return Context.Set<T>()
+                .Where(exp)
+                .ToListAsync();
         }
 
-        public T GetById(int id)
+        public T GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return Context.Set<T>().FirstOrDefault(f => f.Id == id);
         }
 
-        public Task<T> GetByIdAsync(int id)
+        public Task<T> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return Context.Set<T>().FirstOrDefaultAsync(f => f.Id == id);
         }
 
         public void Remove(T entity)
         {
-            throw new NotImplementedException();
+            Context.Remove(entity);
         }
 
-        public void Remove(int id)
+        public void Remove(Guid id)
         {
-            throw new NotImplementedException();
+            var entity = GetById(id);
+            if (entity != null)
+                Remove(entity);
         }
 
         public void RemoveRange(IList<T> entities)
         {
-            throw new NotImplementedException();
+            Context.RemoveRange(entities);
         }
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            Context.Set<T>().Attach(entity);
+            Context.Entry(entity).State = EntityState.Modified;
         }
 
         public void UpdateRange(IList<T> entities)
         {
-            throw new NotImplementedException();
+            Context.UpdateRange(entities);
+        }
+
+        public int SaveChanges()
+        {
+            return Context.SaveChanges();
+        }
+
+        public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return Context.SaveChangesAsync(cancellationToken);
         }
     }
 }
