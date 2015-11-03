@@ -4,7 +4,6 @@ namespace Domain
 {
     public class Cliente
     {
-        //
         internal Cliente()
         {
         }
