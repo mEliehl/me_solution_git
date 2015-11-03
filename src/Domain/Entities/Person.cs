@@ -11,8 +11,6 @@ namespace Domain.Entities
         public Person(string Nome,
             string Email)
         {
-            this.Id = Guid.NewGuid();
-
             this.Name = Nome;
             this.Email = Email;
         }
