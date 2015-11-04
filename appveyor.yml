@@ -1,0 +1,8 @@
+configuration: Release
+# restore nuget before build
+before_build:
+  - nuget restore
+  
+build:
+  verbosity: minimal
+  publish_wap: true
