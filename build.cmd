@@ -22,6 +22,7 @@ IF EXIST packages\Sake goto getdnx
 IF "%BUILDCMD_KOREBUILD_VERSION%"=="" (
 echo Tem um SE
     .nuget\nuget.exe install KoreBuild -ExcludeVersion -o packages -nocache -pre
+echo Tem um SE2
 ) ELSE (
 echo Tem um Else
     .nuget\nuget.exe install KoreBuild -version %BUILDCMD_KOREBUILD_VERSION% -ExcludeVersion -o packages -nocache -pre
