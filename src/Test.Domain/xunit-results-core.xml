@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<assemblies>
+  <assembly name="Test.Domain.dll" environment="32-bit .NET (unknown version) [collection-per-class, parallel (8 threads)]" test-framework="xUnit.net 2.1.0.3179" run-date="2015-11-04" run-time="19:44:54" total="2" passed="2" failed="0" skipped="0" time="0.161" errors="0">
+    <errors />
+    <collection total="2" passed="2" failed="0" skipped="0" name="Test collection for Test.Domain.Entities.PersonTest" time="0.036">
+      <test name="Test.Domain.Entities.PersonTest.ShouldCreateValidObject" type="Test.Domain.Entities.PersonTest" method="ShouldCreateValidObject" time="0.0349161" result="Pass" />
+      <test name="Test.Domain.Entities.PersonTest.ShouldCreateValidObjectAndChangeName" type="Test.Domain.Entities.PersonTest" method="ShouldCreateValidObjectAndChangeName" time="0.0010196" result="Pass" />
+    </collection>
+  </assembly>
+</assemblies>

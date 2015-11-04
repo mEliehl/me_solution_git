@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<assemblies>
+  <assembly name="Test.Infra.dll" environment="32-bit .NET (unknown version) [collection-per-class, parallel (8 threads)]" test-framework="xUnit.net 2.1.0.3179" run-date="2015-11-04" run-time="19:44:55" total="13" passed="13" failed="0" skipped="0" time="0.949" errors="0">
+    <errors />
+    <collection total="13" passed="13" failed="0" skipped="0" name="Test collection for Test.Infra.Repositories.PersonRepositoryTests" time="0.820">
+      <test name="Test.Infra.Repositories.PersonRepositoryTests.ShouldAddAndRemoveByIdReturnNoEntityTest" type="Test.Infra.Repositories.PersonRepositoryTests" method="ShouldAddAndRemoveByIdReturnNoEntityTest" time="0.7038786" result="Pass" />
+      <test name="Test.Infra.Repositories.PersonRepositoryTests.ShouldAddAndHasValidGuidTest" type="Test.Infra.Repositories.PersonRepositoryTests" method="ShouldAddAndHasValidGuidTest" time="0.0031615" result="Pass" />
+      <test name="Test.Infra.Repositories.PersonRepositoryTests.ShouldAddAndGetByIdReturnSameEntityTest" type="Test.Infra.Repositories.PersonRepositoryTests" method="ShouldAddAndGetByIdReturnSameEntityTest" time="0.0025257" result="Pass" />
+      <test name="Test.Infra.Repositories.PersonRepositoryTests.ShouldAddAndUpdateRangeChangePropertiesTest" type="Test.Infra.Repositories.PersonRepositoryTests" method="ShouldAddAndUpdateRangeChangePropertiesTest" time="0.0215497" result="Pass" />
+      <test name="Test.Infra.Repositories.PersonRepositoryTests.ShouldAddAndAnyAsyncReturnTrueTest" type="Test.Infra.Repositories.PersonRepositoryTests" method="ShouldAddAndAnyAsyncReturnTrueTest" time="0.0260737" result="Pass" />
+      <test name="Test.Infra.Repositories.PersonRepositoryTests.ShouldAddRangeAndHasValidsGuidsTest" type="Test.Infra.Repositories.PersonRepositoryTests" method="ShouldAddRangeAndHasValidsGuidsTest" time="0.0014389" result="Pass" />
+      <test name="Test.Infra.Repositories.PersonRepositoryTests.ShouldAddAndAnyReturnTrueTest" type="Test.Infra.Repositories.PersonRepositoryTests" method="ShouldAddAndAnyReturnTrueTest" time="0.0013331" result="Pass" />
+      <test name="Test.Infra.Repositories.PersonRepositoryTests.ShouldAddAndUpdateChangePropertieTest" type="Test.Infra.Repositories.PersonRepositoryTests" method="ShouldAddAndUpdateChangePropertieTest" time="0.0068978" result="Pass" />
+      <test name="Test.Infra.Repositories.PersonRepositoryTests.ShouldAddAndGetReturnSameEntityTest" type="Test.Infra.Repositories.PersonRepositoryTests" method="ShouldAddAndGetReturnSameEntityTest" time="0.009421" result="Pass" />
+      <test name="Test.Infra.Repositories.PersonRepositoryTests.ShouldAddAndGetByIdAsyncReturnSameEntityTest" type="Test.Infra.Repositories.PersonRepositoryTests" method="ShouldAddAndGetByIdAsyncReturnSameEntityTest" time="0.0159002" result="Pass" />
+      <test name="Test.Infra.Repositories.PersonRepositoryTests.ShouldAddAndRemoveReturnNoEntityTest" type="Test.Infra.Repositories.PersonRepositoryTests" method="ShouldAddAndRemoveReturnNoEntityTest" time="0.0013942" result="Pass" />
+      <test name="Test.Infra.Repositories.PersonRepositoryTests.ShouldAddAndRemoveRangeReturnNoEntityTest" type="Test.Infra.Repositories.PersonRepositoryTests" method="ShouldAddAndRemoveRangeReturnNoEntityTest" time="0.0125083" result="Pass" />
+      <test name="Test.Infra.Repositories.PersonRepositoryTests.ShouldAddAndGetAsyncReturnSameEntityTest" type="Test.Infra.Repositories.PersonRepositoryTests" method="ShouldAddAndGetAsyncReturnSameEntityTest" time="0.0141252" result="Pass" />
+    </collection>
+  </assembly>
+</assemblies>

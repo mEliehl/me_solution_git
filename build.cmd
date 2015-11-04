@@ -38,3 +38,15 @@ IF "%SKIP_DNX_INSTALL%"=="" (
 )
 
 packages\Sake\tools\Sake.exe -I packages\KoreBuild\build -f makefile.shade %*
+
+CALL dnvm use 1.0.0-beta8 -r CoreCLR
+
+cd %~dp0
+cd src\Test.Domain
+CALL dnx test -xml .\xunit-results-core.xml
+IF %errorlevel% neq 0 EXIT /b %errorlevel%
+
+cd %~dp0
+cd src\Test.Infra
+CALL dnx test -xml .\xunit-results-core.xml
+IF %errorlevel% neq 0 EXIT /b %errorlevel%
