@@ -1,8 +1,7 @@
-configuration: Release
-# restore nuget before build
-before_build:
-  - nuget restore
-  
-build:
-  verbosity: minimal
-  publish_wap: true
+init:
+  - git config --global core.autocrlf true
+build_script:
+  - build.cmd --quiet --parallel verify
+clone_depth: 1
+test: off
+deploy: off
