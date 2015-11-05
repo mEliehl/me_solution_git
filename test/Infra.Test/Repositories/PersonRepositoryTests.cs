@@ -2,12 +2,12 @@
 using Domain.Repositories;
 using Infra.Repositories;
 using System;
-using System.Linq;
 using System.Collections.Generic;
-using Xunit;
+using System.Linq;
 using System.Threading.Tasks;
+using Xunit;
 
-namespace Test.Infra.Repositories
+namespace Infra.Test.Repositories
 {
     public class PersonRepositoryTests
     {
@@ -151,7 +151,7 @@ namespace Test.Infra.Repositories
             var actual = new List<Person>() { CreateTestObject(), CreateTestObject() };
             personRepository.AddRange(actual);
             personRepository.SaveChanges();
-            
+
             actual.FirstOrDefault().ChangeName("Marcolino");
             personRepository.UpdateRange(actual);
             personRepository.SaveChanges();
@@ -160,3 +160,4 @@ namespace Test.Infra.Repositories
 
     }
 }
+

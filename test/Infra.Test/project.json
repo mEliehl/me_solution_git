@@ -1,17 +1,18 @@
 ﻿{
   "version": "1.0.0-*",
-  "description": "Test.Infra Class Library",
+  "description": "Infra.Test Class Library",
   "authors": [ "Marcos" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
 
-  "commands": {
+ "commands": {
     "test": "xunit.runner.dnx"
   },
 
   "dependencies": {
     "Domain": "",
+    "Infra": "",
     "xunit": "2.1.0",
     "xunit.runner.dnx": "2.1.0-beta6-build191"
   },

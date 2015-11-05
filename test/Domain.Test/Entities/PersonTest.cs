@@ -1,7 +1,7 @@
 ﻿using Domain.Entities;
 using Xunit;
 
-namespace Test.Domain.Entities
+namespace Domain.Test.Entities
 {
     public class PersonTest
     {
@@ -24,8 +24,8 @@ namespace Test.Domain.Entities
             var actual = CreateTestObject();
             var expected = "Marcolino";
             actual.ChangeName("Marcolino");
-            Assert.Equal(expected,actual.Name);
-            
+            Assert.Equal(expected, actual.Name);
+
         }
 
     }
