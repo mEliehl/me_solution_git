@@ -25,7 +25,7 @@ namespace Infra.Repositories
             Context.Add(entity);
         }
 
-        public void AddRange(IList<T> entities)
+        public void AddRange(IEnumerable<T> entities)
         {
             Context.AddRange(entities);
         }
@@ -40,7 +40,7 @@ namespace Infra.Repositories
             return Context.Set<T>().AnyAsync(exp);
         }
 
-        public IList<T> Get(Expression<Func<T, bool>> exp)
+        public IEnumerable<T> Get(Expression<Func<T, bool>> exp)
         {
             return Context.Set<T>()
                 .Where(exp)
@@ -76,7 +76,7 @@ namespace Infra.Repositories
                 Remove(entity);
         }
 
-        public void RemoveRange(IList<T> entities)
+        public void RemoveRange(IEnumerable<T> entities)
         {
             Context.RemoveRange(entities);
         }
@@ -87,7 +87,7 @@ namespace Infra.Repositories
             Context.Entry(entity).State = EntityState.Modified;
         }
 
-        public void UpdateRange(IList<T> entities)
+        public void UpdateRange(IEnumerable<T> entities)
         {
             Context.UpdateRange(entities);
         }

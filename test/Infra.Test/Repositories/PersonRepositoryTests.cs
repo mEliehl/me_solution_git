@@ -9,51 +9,25 @@ using Xunit;
 
 namespace Infra.Test.Repositories
 {
-    public class PersonRepositoryTests
+    public class PersonRepositoryTests : BaseRepositoryTest<Person,PersonRepository>
     {
         readonly IPersonRepository personRepository;
 
         public PersonRepositoryTests()
+            :base(new PersonRepository())
         {
             personRepository = new PersonRepository();
         }
 
-        private Person CreateTestObject()
+        protected override Person CreateEntityToTest()
         {
             return new Person("Marcos Eliehl dos Santos", "meliehl@outlook.com");
         }
 
         [Fact]
-        public void ShouldAddAndHasValidGuidTest()
-        {
-            var actual = CreateTestObject();
-            personRepository.Add(actual);
-            personRepository.SaveChanges();
-            Assert.True(actual.Id != Guid.Empty);
-        }
-
-        [Fact]
-        public void ShouldAddRangeAndHasValidsGuidsTest()
-        {
-            var actual = new List<Person>() { CreateTestObject(), CreateTestObject() };
-            personRepository.AddRange(actual);
-            personRepository.SaveChanges();
-            Assert.True(actual.All(a => a.Id != Guid.Empty));
-        }
-
-        [Fact]
-        public void ShouldAddAndAnyReturnTrueTest()
-        {
-            var actual = CreateTestObject();
-            personRepository.Add(actual);
-            personRepository.SaveChanges();
-            Assert.True(personRepository.Any(a => a.Id == actual.Id));
-        }
-
-        [Fact]
         public async Task ShouldAddAndAnyAsyncReturnTrueTest()
         {
-            var actual = CreateTestObject();
+            var actual = CreateEntityToTest();
             personRepository.Add(actual);
             await personRepository.SaveChangesAsync();
             var expect = personRepository.AnyAsync(a => a.Id == actual.Id);
@@ -63,7 +37,7 @@ namespace Infra.Test.Repositories
         [Fact]
         public void ShouldAddAndGetReturnSameEntityTest()
         {
-            var actual = CreateTestObject();
+            var actual = CreateEntityToTest();
             personRepository.Add(actual);
             personRepository.SaveChanges();
             var expected = personRepository.Get(w => w.Id == actual.Id).FirstOrDefault();
@@ -73,7 +47,7 @@ namespace Infra.Test.Repositories
         [Fact]
         public async Task ShouldAddAndGetAsyncReturnSameEntityTest()
         {
-            var actual = CreateTestObject();
+            var actual = CreateEntityToTest();
             personRepository.Add(actual);
             personRepository.SaveChanges();
             var expected = await personRepository.GetAsync(w => w.Id == actual.Id);
@@ -83,7 +57,7 @@ namespace Infra.Test.Repositories
         [Fact]
         public void ShouldAddAndGetByIdReturnSameEntityTest()
         {
-            var actual = CreateTestObject();
+            var actual = CreateEntityToTest();
             personRepository.Add(actual);
             personRepository.SaveChanges();
             var expected = personRepository.GetById(actual.Id);
@@ -93,7 +67,7 @@ namespace Infra.Test.Repositories
         [Fact]
         public async Task ShouldAddAndGetByIdAsyncReturnSameEntityTest()
         {
-            var actual = CreateTestObject();
+            var actual = CreateEntityToTest();
             personRepository.Add(actual);
             personRepository.SaveChanges();
             var expected = await personRepository.GetByIdAsync(actual.Id);
@@ -103,7 +77,7 @@ namespace Infra.Test.Repositories
         [Fact]
         public void ShouldAddAndRemoveByIdReturnNoEntityTest()
         {
-            var actual = CreateTestObject();
+            var actual = CreateEntityToTest();
             personRepository.Add(actual);
             personRepository.SaveChanges();
             personRepository.Remove(actual.Id);
@@ -114,7 +88,7 @@ namespace Infra.Test.Repositories
         [Fact]
         public void ShouldAddAndRemoveReturnNoEntityTest()
         {
-            var actual = CreateTestObject();
+            var actual = CreateEntityToTest();
             personRepository.Add(actual);
             personRepository.SaveChanges();
             personRepository.Remove(actual);
@@ -125,7 +99,7 @@ namespace Infra.Test.Repositories
         [Fact]
         public void ShouldAddAndRemoveRangeReturnNoEntityTest()
         {
-            var actual = new List<Person>() { CreateTestObject(), CreateTestObject() };
+            var actual = new List<Person>() { CreateEntityToTest(), CreateEntityToTest() };
             personRepository.AddRange(actual);
             personRepository.SaveChanges();
             personRepository.RemoveRange(actual);
@@ -136,7 +110,7 @@ namespace Infra.Test.Repositories
         [Fact]
         public void ShouldAddAndUpdateChangePropertieTest()
         {
-            var actual = CreateTestObject();
+            var actual = CreateEntityToTest();
             personRepository.Add(actual);
             personRepository.SaveChanges();
             actual.ChangeName("Marcolino");
@@ -148,7 +122,7 @@ namespace Infra.Test.Repositories
         [Fact]
         public void ShouldAddAndUpdateRangeChangePropertiesTest()
         {
-            var actual = new List<Person>() { CreateTestObject(), CreateTestObject() };
+            var actual = new List<Person>() { CreateEntityToTest(), CreateEntityToTest() };
             personRepository.AddRange(actual);
             personRepository.SaveChanges();
 
@@ -157,7 +131,6 @@ namespace Infra.Test.Repositories
             personRepository.SaveChanges();
             Assert.True(personRepository.Any(a => actual.Any(a1 => a1.Name == a.Name)));
         }
-
     }
 }
 
