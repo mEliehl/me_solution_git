@@ -4,7 +4,7 @@ using Microsoft.Data.Entity;
 
 namespace Infra.Contexts
 {
-    public class BaseContext : DbContext
+    internal class BaseContext : DbContext
     {
         public new DbSet<T> Set<T>() where T : Identity
         {

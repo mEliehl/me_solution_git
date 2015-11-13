@@ -11,7 +11,7 @@ using System.Threading;
 
 namespace Infra.Repositories
 {
-    public abstract class BaseRepository<T> : IBaseRepository<T> where T : Identity
+    internal abstract class BaseRepository<T> : IBaseRepository<T> where T : Identity
     {
         protected readonly DbContext Context;
 

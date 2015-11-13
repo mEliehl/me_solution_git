@@ -1,17 +1,16 @@
 ﻿using Domain.Entities;
 using Domain.Repositories;
 using Infra.Repositories;
+using Infra.Repositories.Factories;
 
 namespace Infra.Test.Repositories
 {
-    public class PersonRepositoryTests : BaseRepositoryTest<Person,PersonRepository>
+    public class PersonRepositoryTests : BaseRepositoryTest<Person,IPersonRepository>
     {
-        readonly IPersonRepository personRepository;
-
         public PersonRepositoryTests()
-            :base(new PersonRepository())
+            :base(PersonRepositoryFactory.Create())
         {
-            personRepository = new PersonRepository();
+            
         }
 
         protected override Person CreateEntityToTest()

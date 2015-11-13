@@ -5,7 +5,7 @@ using System;
 
 namespace Infra.Configs
 {
-    public class PersonConfig
+    internal class PersonConfig
     {
         public static Action<EntityTypeBuilder<Person>> Config()
         {
