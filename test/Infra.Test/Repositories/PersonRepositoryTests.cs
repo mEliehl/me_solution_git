@@ -8,7 +8,7 @@ namespace Infra.Test.Repositories
     public class PersonRepositoryTests : BaseRepositoryTest<Person,IPersonRepository>
     {
         public PersonRepositoryTests()
-            :base(PersonRepositoryFactory.Create())
+            :base(PersonRepositoryFactory.Create(UnitOfWork.Create().Context))
         {
             
         }

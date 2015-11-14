@@ -1,8 +1,15 @@
-﻿using Domain.Entities;
+﻿using ApplicationService.CommandsHandlers;
+using Domain.Commands;
+using Domain.Entities;
+using Domain.Repositories;
+using Infra;
 using Infra.Repositories.Factories;
 using Microsoft.AspNet.Mvc;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
+using WebApi.ViewModel;
+
 
 namespace WebApi.Controllers
 {
@@ -13,16 +20,22 @@ namespace WebApi.Controllers
         [HttpGet]
         public async Task<IList<Person>> Get()
         {
-            var repo = PersonRepositoryFactory.Create();
-            IList<Person> persons = new List<Person>();
-            var person1 = new Person("Marcos Eliehl dos Santos", "meliehl@outlook.com");
-            var person2 = new Person("Mariana Guin", "marianaguin@outlook.com");
-            persons.Add(person1);
-            persons.Add(person2);
+            using (var uow = UnitOfWork.Create())
+            {
+                IPersonRepository personRepository = PersonRepositoryFactory.Create(uow.Context);
+                return await personRepository.GetAsync(w => true);
+            }
+        }
 
-            repo.AddRange(persons);
-            await repo.SaveChangesAsync();
-            return await repo.GetAsync(w => true);
+        // POST api/values
+        [HttpPost]
+        public async Task<IActionResult> Post(PersonViewModel person)
+        {
+            var handler = new TransactionCommandHandlerDecorator<CreatePersonCommand>(
+                new CreatePersonCommandHandler());
+            
+            await handler.Handle(new CreatePersonCommand(person.Name, person.Email));
+            return new HttpStatusCodeResult((int)HttpStatusCode.OK);
         }
     }
 }

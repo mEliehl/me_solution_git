@@ -1,4 +1,5 @@
 ﻿using Domain.Repositories;
+using Microsoft.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,9 @@ namespace Infra.Repositories.Factories
 {
     public class PersonRepositoryFactory
     {
-        public static IPersonRepository Create()
+        public static IPersonRepository Create(DbContext Context)
         {
-            return new PersonRepository();
+            return new PersonRepository(Context);
         }
     }
 }

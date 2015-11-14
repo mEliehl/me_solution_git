@@ -15,9 +15,9 @@ namespace Infra.Repositories
     {
         protected readonly DbContext Context;
 
-        public BaseRepository()
+        public BaseRepository(DbContext context)
         {
-            Context = new BaseContext();
+            Context = context;
         }
 
         public void Add(T entity)
